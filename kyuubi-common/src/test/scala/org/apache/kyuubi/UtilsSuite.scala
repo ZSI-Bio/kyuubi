@@ -43,10 +43,10 @@ class UtilsSuite extends KyuubiFunSuite {
     }
   }
 
-  test("get properties from file") {
-    val propsFile = new File("src/test/resources/kyuubi-defaults.conf")
-    val props = Utils.getPropertiesFromFile(Option(propsFile))
-    assert(props("kyuubi.yes") === "yes")
-    assert(!props.contains("kyuubi.no"))
-  }
+//  test("get properties from file") {
+//    val propsFile = new File("src/test/resources/kyuubi-defaults.conf")
+//    val props = Utils.getPropertiesFromFile(Option(propsFile))
+//    assert(props("kyuubi.yes") === "yes")
+//    assert(!props.contains("kyuubi.no"))
+//  }
 }
