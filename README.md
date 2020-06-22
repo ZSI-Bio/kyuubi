@@ -100,3 +100,6 @@ Please refer to the [Authentication/Security Guide](https://yaooqinn.github.io/k
 [Authentication/Security Guide](https://yaooqinn.github.io/kyuubi/docs/authentication.html)  
 [Kyuubi ACL Management Guide](https://yaooqinn.github.io/kyuubi/docs/authorization.html)  
 [Kyuubi Architecture](https://yaooqinn.github.io/kyuubi/docs/architecture.html)
+
+#kkucharczyk - przy buildzie zwraca blad
+./build/mvn clean package -DskipTests 
