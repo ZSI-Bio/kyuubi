@@ -36,36 +36,6 @@ class ExecutorPoolCaptureOomSuite extends KyuubiFunSuite {
 
   private val pool = ExecutorPoolCaptureOom(getClass.getName, 10, 10, 10, oomHook)
 
-  test("t is RuntimeException, r is not future") {
-    val exception = new RuntimeException()
-    pool.execute(() => {
-      throw exception
-    })
-    checkFalse()
-
-    pool.afterExecute(null, exception)
-    checkFalse()
-  }
-
-  test("t is OutOfMemoryError, r is not future") {
-    val error = new OutOfMemoryError()
-    pool.execute(() => {
-      throw error
-    })
-
-    checkTrue()
-    flag = false
-    pool.afterExecute(null, error)
-    checkTrue()
-  }
-
-  test("t is null, r is not future") {
-    pool.execute(() => ())
-    checkFalse()
-
-    pool.afterExecute(null, null)
-    checkFalse()
-  }
 
   test("t is null, r is future with no exception") {
     val future = new TestRunnableFuture(1)
@@ -118,4 +88,9 @@ class TestRunnableFuture[T](f: => T, isDone: Boolean = true) extends RunnableFut
   override def isDone: Boolean = isDone
   override def get(): T = f
   override def get(timeout: Long, unit: TimeUnit): T = f
+}
+
+class TestRunnable(isDone: Boolean = true) extends Runnable{
+  override def run(): Unit = {}
+
 }

@@ -15,7 +15,7 @@
  * limitations under the License.
  */
 
-package org.apache.kyuubi.spark
+package org.apache.spark.sql.hive.thriftserver
 
 import scala.collection.JavaConverters._
 
@@ -46,7 +46,7 @@ object SparkSQLEngineApp extends Logging {
 //    session.conf.set(ConfVars.HIVE_SERVER2_SESSION_CHECK_INTERVAL.varname, "0s")
 
     try {
-      val server = HiveThriftServer2.startWithContext(session.sqlContext)
+      val server = new HiveThriftServer2(session.sqlContext)
       var thriftCLIService: ThriftCLIService = null
       var cliService: CLIService = null
       server.getServices.asScala.foreach {
